@@ -95,37 +95,89 @@ https://templatemo.com/tm-596-electric-xtra
             });
         });
 
-        // Feature tabs functionality
-        const tabs = document.querySelectorAll('.tab-item');
-        const panels = document.querySelectorAll('.content-panel');
+        function renderFeatures(data) {
+            const tabsContainer = document.querySelector('.feature-tabs');
+            const contentContainer = document.querySelector('.feature-content');
+            if (!tabsContainer || !contentContainer) return;
+            tabsContainer.innerHTML = data
+                .map(
+                    (f, i) =>
+                        `<div class="tab-item${i === 0 ? ' active' : ''}" data-tab="${f.id}"><span class="tab-icon">${
+                            f.icon || ''
+                        }</span><span>${f.name}</span></div>`
+                )
+                .join('');
+            contentContainer.innerHTML = data
+                .map(
+                    (f, i) =>
+                        `<div class="content-panel${i === 0 ? ' active' : ''}" id="${f.id}"><h3>${
+                            f.title
+                        }</h3><p>${f.description}</p><ul class="feature-list">${f.items
+                            .map(li => `<li>${li}</li>`)
+                            .join('')}</ul></div>`
+                )
+                .join('');
+        }
 
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                const tabId = tab.getAttribute('data-tab');
-                
-                // Remove active class from all tabs and panels
-                tabs.forEach(t => t.classList.remove('active'));
-                panels.forEach(p => p.classList.remove('active'));
-                
-                // Add active class to clicked tab and corresponding panel
-                tab.classList.add('active');
-                document.getElementById(tabId).classList.add('active');
+        function initFeatureTabs() {
+            const tabs = document.querySelectorAll('.tab-item');
+            const panels = document.querySelectorAll('.content-panel');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const tabId = tab.getAttribute('data-tab');
+                    tabs.forEach(t => t.classList.remove('active'));
+                    panels.forEach(p => p.classList.remove('active'));
+                    tab.classList.add('active');
+                    const target = document.getElementById(tabId);
+                    if (target) target.classList.add('active');
+                });
             });
-        });
+        }
 
-        // Form submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
+        fetch('/api/features')
+            .then(r => r.ok ? r.json() : null)
+            .then(data => {
+                if (Array.isArray(data) && data.length) {
+                    renderFeatures(data);
+                    initFeatureTabs();
+                } else {
+                    initFeatureTabs();
+                }
+            })
+            .catch(() => {
+                initFeatureTabs();
+            });
+
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            // Add your form submission logic here
-            alert('Message sent! We\'ll get back to you soon.');
-            this.reset();
+            const payload = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            };
+            try {
+                const res = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const json = await res.json();
+                if (res.ok && json && json.ok) {
+                    alert('Message sent! We\'ll get back to you soon.');
+                    this.reset();
+                } else {
+                    alert('Unable to send message. Please try again.');
+                }
+            } catch (err) {
+                alert('Network error. Please try again later.');
+            }
         });
 
         // Initialize particles
         createParticles();
 
-        // Text rotation with character animation
-        const textSets = document.querySelectorAll('.text-set');
+        let textSets = document.querySelectorAll('.text-set');
         let currentIndex = 0;
         let isAnimating = false;
 
@@ -188,14 +240,38 @@ https://templatemo.com/tm-596-electric-xtra
             }, 600);
         }
 
-        // Initialize first text set
-        textSets[0].classList.add('active');
-        animateTextIn(textSets[0]);
+        function initHeroRotation() {
+            if (!textSets.length) return;
+            textSets[0].classList.add('active');
+            animateTextIn(textSets[0]);
+            setTimeout(() => {
+                setInterval(rotateText, 5000);
+            }, 4000);
+        }
 
-        // Start rotation after initial display
-        setTimeout(() => {
-            setInterval(rotateText, 5000); // Change every 5 seconds
-        }, 4000);
+        function renderHeroSets(data) {
+            const rotator = document.querySelector('.text-rotator');
+            if (!rotator) return;
+            rotator.innerHTML = data
+                .map(
+                    (s, i) =>
+                        `<div class="text-set${i === 0 ? ' active' : ''}"><h1 class="glitch-text" data-text="${s.title}">${s.title}</h1><p class="subtitle">${s.subtitle}</p></div>`
+                )
+                .join('');
+            textSets = document.querySelectorAll('.text-set');
+        }
+
+        fetch('/api/hero')
+            .then(r => r.ok ? r.json() : null)
+            .then(data => {
+                if (Array.isArray(data) && data.length) {
+                    renderHeroSets(data);
+                }
+                initHeroRotation();
+            })
+            .catch(() => {
+                initHeroRotation();
+            });
 
         // Add random glitch effect
         setInterval(() => {
