@@ -3,19 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JUDE-ODION-OMO-OJUGO - Advanced Architecture Trainer</title>
+    <title>JUDE OMO-OJUGO - Advanced Architecture Trainer</title>
+
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Main Theme Styles -->
     <link href="templatemo-electric-xtra.css" rel="stylesheet">
-<!--
 
-TemplateMo 596 Electric Xtra
+        <style>
+            /* Simple modal styles for login/register */
+            .modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.5); display: none; align-items: center; justify-content: center; z-index: 10000; }
+            .modal { background: #fff; width: 380px; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); overflow: hidden; font-family: Arial, sans-serif; }
+            .modal-header { background: #111; color: #fff; padding: 12px 16px; font-weight: bold; }
+            .modal-body { padding: 16px; }
+            .modal-body label{display:block; margin-bottom:6px; font-size:13px}
+            .modal-body input{width:100%; padding:8px; margin-bottom:10px; box-sizing:border-box}
+            .modal-actions{display:flex; gap:8px; justify-content:flex-end; padding:12px 16px; background:#f6f6f6}
+            .btn{background:#111;color:#fff;border:none;padding:8px 12px;border-radius:6px;cursor:pointer}
+            .btn.secondary{background:#666}
+            .modal-error{color:#b00020;margin-top:8px}
+        </style>
 
-https://templatemo.com/tm-596-electric-xtra
-
--->
+    <!-- Template Courtesy -->
+    <!-- TemplateMo 596 Electric Xtra -->
 </head>
+
 <body>
-    <!-- Animated Grid Background -->
+    <!-- Background Effects -->
     <div class="grid-bg"></div>
     <div class="gradient-overlay"></div>
     <div class="scanlines"></div>
@@ -34,29 +49,40 @@ https://templatemo.com/tm-596-electric-xtra
     <nav id="navbar">
         <div class="nav-container">
             <a href="#home" class="logo-link">
-                <svg class="logo-svg" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                <svg class="logo-svg" viewBox="0 0 40 40">
                     <defs>
                         <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#FF5E00;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#00B2FF;stop-opacity:1" />
+                            <stop offset="0%" style="stop-color:#FF5E00" />
+                            <stop offset="100%" style="stop-color:#00B2FF" />
                         </linearGradient>
                     </defs>
                     <polygon points="20,2 38,14 38,26 20,38 2,26 2,14" fill="none" stroke="url(#logoGradient)" stroke-width="2"/>
                     <polygon points="20,8 32,16 32,24 20,32 8,24 8,16" fill="url(#logoGradient)" opacity="0.3"/>
                     <circle cx="20" cy="20" r="3" fill="url(#logoGradient)"/>
                 </svg>
-                <span class="logo-text">JUDE-ODION-OMO-OJUGO - Training Platform</span>
+                <span class="logo-text">JUDE OMO-OJUGO - Training Platform</span>
             </a>
+
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home" class="nav-link">Home</a></li>
                 <li><a href="#features" class="nav-link">Features</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#" onclick="openLoginModal();return false;">Login</a></li>
+                <li><a href="#" onclick="openRegisterModal();return false;">Register</a></li>
+                <li><a href="admin.html">Admin Dashboard</a></li>
+                <li><a href="#" onclick="logout()">Logout</a></li>
             </ul>
+
+            <script>
+                function logout() {
+                    localStorage.removeItem("token");
+                    alert("Logged out!");
+                }
+            </script>
+
             <div class="menu-toggle" id="menuToggle">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
             </div>
         </div>
     </nav>
@@ -66,105 +92,67 @@ https://templatemo.com/tm-596-electric-xtra
         <div class="hero-content">
             <div class="text-rotator">
                 <div class="text-set active">
-                    <h1 class="glitch-text" data-text="Your Advanced IT starts here">ML/AL Architecture</h1>
+                    <h1 class="glitch-text" data-text="Your Advanced IT starts here">ML/AI Architecture</h1>
                     <p class="subtitle">Enter the next dimension of digital innovation</p>
                 </div>
+
                 <div class="text-set">
                     <h1 class="glitch-text" data-text="Cybersecurity Training">Cybersecurity Training</h1>
                     <p class="subtitle">Where technology meets infinite possibilities</p>
                 </div>
+
                 <div class="text-set">
                     <h1 class="glitch-text" data-text="Cloud Architecture">Cloud Architecture</h1>
                     <p class="subtitle">Powering tomorrow's digital revolution today</p>
                 </div>
             </div>
         </div>
+
         <div class="cta-container">
             <a href="#features" class="cta-button cta-primary">Get Started</a>
             <a href="#about" class="cta-button cta-secondary">Learn More</a>
         </div>
     </section>
 
-    <!-- Features Section with Tabs -->
+    <!-- Feature Tabs -->
     <section class="features" id="features">
-        <h2 class="section-title">Core Features</h2>
+        <h2 class="section-title">Core Skills</h2>
+
         <div class="features-container">
+            <!-- Tabs -->
             <div class="feature-tabs">
-                <div class="tab-item active" data-tab="performance">
-                    <span class="tab-icon">⚡</span>
-                    <span>Performance</span>
-                </div>
-                <div class="tab-item" data-tab="security">
-                    <span class="tab-icon">🔒</span>
-                    <span>Security</span>
-                </div>
-                <div class="tab-item" data-tab="network">
-                    <span class="tab-icon">🌐</span>
-                    <span>Network</span>
-                </div>
-                <div class="tab-item" data-tab="analytics">
-                    <span class="tab-icon">📊</span>
-                    <span>Analytics</span>
-                </div>
-                <div class="tab-item" data-tab="integration">
-                    <span class="tab-icon">🔧</span>
-                    <span>Integration</span>
-                </div>
+                <div class="tab-item active" data-tab="performance">⚡ Data Center Infrastructure Build Lead</div>
+                <div class="tab-item" data-tab="security">🔒 Telecommunications Operation</div>
+                <div class="tab-item" data-tab="network">🌐 Cybersecurity Engineering</div>
+                <div class="tab-item" data-tab="analytics">📊 AWS Cloud Engineering</div>
+                <div class="tab-item" data-tab="integration">🔧 AI/ML Engineering</div>
             </div>
+
+            <!-- Content -->
             <div class="feature-content">
                 <div class="content-panel active" id="performance">
                     <h3>Lightning Fast Performance</h3>
-                    <p>Experience unprecedented speed with our quantum-powered infrastructure. Built on cutting-edge technology that delivers results at the speed of thought. Electric Xtra CSS template is brought to you by TemplateMo website.</p>
-                    <ul class="feature-list">
-                        <li>Sub-millisecond response times</li>
-                        <li>99.99% uptime guarantee</li>
-                        <li>Automatic scaling based on demand</li>
-                        <li>Real-time data synchronization</li>
-                    </ul>
+                    <p>Deployment of AWS Direct Connect, CloudFront, and Ciena long-haul optical systems.</p>
                 </div>
+
                 <div class="content-panel" id="security">
                     <h3>Military-Grade Security</h3>
-                    <p>Your data is protected by the most advanced encryption protocols available. Multi-layered security ensures complete protection against cyber threats. You may tell your friends about TemplateMo free css website and how easy it is.</p>
-                    <ul class="feature-list">
-                        <li>256-bit AES encryption</li>
-                        <li>Biometric authentication</li>
-                        <li>Zero-knowledge architecture</li>
-                        <li>Real-time threat detection</li>
-                        <li>Automated security updates</li>
-                    </ul>
+                    <p>12+ years telecommunications engineering experience including DWDM & Microwave.</p>
                 </div>
+
                 <div class="content-panel" id="network">
                     <h3>Global Neural Network</h3>
-                    <p>Connect to our worldwide infrastructure that spans across continents. Seamless integration with existing systems and future-proof architecture.</p>
-                    <ul class="feature-list">
-                        <li>200+ global data centers</li>
-                        <li>Intelligent routing algorithms</li>
-                        <li>Cross-platform compatibility</li>
-                        <li>5G and satellite connectivity</li>
-                        <li>Decentralized architecture</li>
-                    </ul>
+                    <p>Experienced cybersecurity engineer with U.S. graduate-level training.</p>
                 </div>
+
                 <div class="content-panel" id="analytics">
                     <h3>Advanced Analytics</h3>
-                    <p>Harness the power of AI-driven insights to make data-driven decisions. Real-time analytics and predictive modeling at your fingertips.</p>
-                    <ul class="feature-list">
-                        <li>Machine learning algorithms</li>
-                        <li>Predictive analytics</li>
-                        <li>Custom dashboard creation</li>
-                        <li>Real-time data visualization</li>
-                        <li>Automated reporting</li>
-                    </ul>
+                    <p>AWS Certified Solutions Architect with cloud systems expertise.</p>
                 </div>
+
                 <div class="content-panel" id="integration">
                     <h3>Seamless Integration</h3>
-                    <p>Connect with thousands of apps and services through our universal API. Built to work with your existing tools and workflows.</p>
-                    <ul class="feature-list">
-                        <li>RESTful API architecture</li>
-                        <li>WebSocket support</li>
-                        <li>SDK for major platforms</li>
-                        <li>One-click integrations</li>
-                        <li>Custom webhook support</li>
-                    </ul>
+                    <p>AI engineer with expertise in ML deployment and pipeline automation.</p>
                 </div>
             </div>
         </div>
@@ -176,103 +164,311 @@ https://templatemo.com/tm-596-electric-xtra
         <div class="about-content">
             <div class="about-text">
                 <h2>Pioneering the Digital Frontier</h2>
-                <p>At ELECTRIC XTRA, we're not just building technology – we're crafting the future. Our mission is to bridge the gap between human potential and digital innovation, creating solutions that empower individuals and transform industries.</p>
-                <p>Founded by visionaries who saw beyond the limitations of current technology, ELECTRIC XTRA represents a quantum leap in digital infrastructure. We combine cutting-edge research with practical applications to deliver solutions that are both revolutionary and reliable.</p>
-                <p>Join us as we redefine what's possible in the digital age. The future isn't something that happens to us – it's something we create together.</p>
+                <p>We craft innovations that bridge human potential and digital transformation.</p>
             </div>
-            <div class="about-visual">
-                <div class="about-graphic"></div>
-            </div>
-        </div>
-        
-        <!-- Second row with reversed layout -->
-        <div class="about-content" style="margin-top: 80px;">
-            <div class="about-visual">
-                <div class="about-graphic-alt">
-                    <div class="hexagon"></div>
-                    <div class="hexagon"></div>
-                    <div class="hexagon"></div>
-                </div>
-            </div>
-            <div class="about-text">
-                <h2>Innovation at Every Level</h2>
-                <p>Our commitment to excellence drives us to push boundaries and challenge conventions. With a team of world-class engineers, designers, and visionaries, we're creating solutions that not only meet today's needs but anticipate tomorrow's challenges.</p>
-                <p>From quantum computing to neural networks, from blockchain to AI, we're at the forefront of every technological revolution. Our integrated approach ensures that each innovation builds upon the last, creating a synergy that amplifies our impact.</p>
-                <p>Experience the power of true digital transformation. With ELECTRIC XTRA, you're not just adopting technology – you're embracing a philosophy of continuous evolution and limitless possibility.</p>
-            </div>
+            <div class="about-visual"><div class="about-graphic"></div></div>
         </div>
     </section>
 
     <!-- Contact Section -->
     <section class="contact" id="contact">
         <h2 class="section-title">Get In Touch</h2>
+
         <div class="contact-container">
             <div class="contact-form">
                 <form id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <input type="text" id="subject" name="subject" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" required></textarea>
-                    </div>
+                    <label>Name</label>
+                    <input type="text" id="name" required>
+
+                    <label>Email</label>
+                    <input type="email" id="email" required>
+
+                    <label>Subject</label>
+                    <input type="text" id="subject" required>
+
+                    <label>Message</label>
+                    <textarea id="message" required></textarea>
+
                     <button type="submit" class="submit-btn">Send Message</button>
                 </form>
             </div>
+
             <div class="contact-info">
                 <h3>Connect With Us</h3>
-                <div class="info-item">
-                    <div class="info-icon">📧</div>
-                    <div class="info-details">
-                        <h4>Email</h4>
-                        <p>contact@electricxtra.tech</p>
-                    </div>
-                </div>
-                <div class="info-item">
-                    <div class="info-icon">📱</div>
-                    <div class="info-details">
-                        <h4>Phone</h4>
-                        <p>+1 (555) 123-4567</p>
-                    </div>
-                </div>
-                <div class="info-item">
-                    <div class="info-icon">📍</div>
-                    <div class="info-details">
-                        <h4>Location</h4>
-                        <p>Neo Tokyo, Sector 7</p>
-                    </div>
-                </div>
-                <div class="map-container">
-                    <div class="map-placeholder">
-                        <p>Interactive Map</p>
-                        <p style="font-size: 0.9rem; margin-top: 10px;">Neo Tokyo, Sector 7</p>
-                    </div>
-                    <div class="map-overlay"></div>
-                </div>
+
+                <div class="info-item"><div class="info-icon">📧</div><p>ojugo.jude@gmail.com</p></div>
+                <div class="info-item"><div class="info-icon">📱</div><p>+1 (612) 407-7143</p></div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="#privacy">Privacy Policy</a>
-                <a href="#terms">Terms of Service</a>
-                <a href="#careers">Careers</a>
-            </div>
-            <p class="copyright">© 2025 ELECTRIC XTRA. All rights reserved. Building tomorrow, today. | Design: <a href="https://templatemo.com" target="_blank" rel="nofollow noopener">TemplateMo</a></p>
-        </div>
+        <p>© 2025 ELECTRIC XTRA. All Rights Reserved.</p>
     </footer>
-<script src="templatemo-electric-scripts.js"></script>
+
+    <!-- Template Scripts -->
+    <script src="templatemo-electric-scripts.js"></script>
+
+    <!-- Chatbot Button -->
+        <div id="chatButton"
+                 style="position: fixed; bottom: 30px; right: 30px; background: black;
+                                color: white; width: 60px; height: 60px; border-radius: 50%;
+                                display: flex; align-items: center; justify-content: center;
+                                font-size: 30px; cursor: pointer; z-index: 9999;">
+                💬
+        </div>
+
+        <!-- Login / Register Modal Backdrop -->
+        <div id="modalBackdrop" class="modal-backdrop" aria-hidden="true">
+            <div class="modal" role="dialog" aria-modal="true">
+                <div class="modal-header" id="modalTitle">Login</div>
+                <div class="modal-body" id="modalBody">
+                    <!-- forms will be swapped dynamically -->
+                    <form id="modalLoginForm" style="display:block">
+                        <label for="m_email">Email</label>
+                        <input id="m_email" type="email" required>
+                        <label for="m_password">Password</label>
+                        <input id="m_password" type="password" required>
+                        <div class="modal-error" id="modalErrorLogin" style="display:none"></div>
+                    </form>
+
+                    <form id="modalRegisterForm" style="display:none">
+                        <label for="r_name">Name</label>
+                        <input id="r_name" type="text">
+                        <label for="r_email">Email</label>
+                        <input id="r_email" type="email" required>
+                        <label for="r_password">Password</label>
+                        <input id="r_password" type="password" required>
+                        <div class="modal-error" id="modalErrorRegister" style="display:none"></div>
+                    </form>
+                </div>
+                <div class="modal-actions">
+                    <button class="btn secondary" id="switchModal">Switch to Register</button>
+                    <button class="btn" id="modalSubmit">Submit</button>
+                    <button class="btn secondary" id="modalClose">Close</button>
+                </div>
+            </div>
+        </div>
+
+    <!-- Chat Window -->
+    <div id="chatWindow"
+         style="position: fixed; bottom: 100px; right: 30px; width: 350px;
+                height: 450px; background: white; border-radius: 10px;
+                box-shadow: 0 0 15px rgba(0,0,0,0.3); display: none !important;
+                flex-direction: column; z-index: 9999;">
+        <div style="background: black; color: white; padding: 10px;
+                    border-radius: 10px 10px 0 0;">
+            Judesman AI Assistant
+        </div>
+
+        <div id="chatMessages"
+             style="flex: 1; overflow-y: auto; padding: 10px; font-family: Arial; background: #f9f9f9;">
+        </div>
+
+        <div style="display: flex; padding: 10px; gap: 8px;">
+            <input id="chatInput" type="text" placeholder="Type a message..."
+                   style="flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-family: Arial;">
+            <button id="sendChat"
+                    style="padding: 10px 15px; background: black; color:white;
+                           border:none; border-radius:5px; cursor: pointer; font-weight: bold;">
+                Send
+            </button>
+        </div>
+    </div>
+
+    <!-- Chatbot Script (ONLY ONE VERSION) -->
+    <script>
+        console.log("CHATBOT SCRIPT LOADED");
+
+        const chatButton = document.getElementById("chatButton");
+        const chatWindow = document.getElementById("chatWindow");
+        const chatMessages = document.getElementById("chatMessages");
+        const chatInput = document.getElementById("chatInput");
+        const sendChat = document.getElementById("sendChat");
+
+        // Toggle chat window
+        chatButton.onclick = () => {
+            console.log("CHAT BUTTON CLICKED");
+            const isHidden = chatWindow.style.display === "none" || chatWindow.style.display === "";
+            chatWindow.style.display = isHidden ? "flex" : "none";
+            if (isHidden) {
+                chatInput.focus();
+            }
+        };
+
+        // Send message to backend
+        sendChat.onclick = async () => {
+            console.log("SEND BUTTON CLICKED");
+
+            const message = chatInput.value.trim();
+            if (!message) return;
+
+            // Display user message
+            const userMsgEl = document.createElement("p");
+            userMsgEl.style.marginBottom = "10px";
+            userMsgEl.innerHTML = `<strong style="color: #333;">You:</strong> <span style="color: #666;">${message.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</span>`;
+            chatMessages.appendChild(userMsgEl);
+            chatInput.value = "";
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            try {
+                const res = await fetch("/api/chatbot", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ message })
+                });
+
+                const data = await res.json();
+                console.log("AI RESPONSE:", data);
+
+                // Display AI message
+                const aiMsgEl = document.createElement("p");
+                aiMsgEl.style.marginBottom = "10px";
+                aiMsgEl.innerHTML = `<strong style="color: #FF5E00;">AI:</strong> <span style="color: #555;">${data.reply.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</span>`;
+                chatMessages.appendChild(aiMsgEl);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            } catch (err) {
+                console.error("Error sending message:", err);
+                const errorEl = document.createElement("p");
+                errorEl.style.color = "red";
+                errorEl.innerHTML = `<strong>Error:</strong> Failed to get response`;
+                chatMessages.appendChild(errorEl);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+        };
+
+        // Allow sending with Enter key
+        chatInput.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") {
+                sendChat.click();
+            }
+        });
+    </script>
+
+        <script>
+            // Modal handling for login/register on the main page
+            const modalBackdrop = document.getElementById('modalBackdrop');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalLoginForm = document.getElementById('modalLoginForm');
+            const modalRegisterForm = document.getElementById('modalRegisterForm');
+            const modalSubmit = document.getElementById('modalSubmit');
+            const modalClose = document.getElementById('modalClose');
+            const switchModal = document.getElementById('switchModal');
+            const modalErrorLogin = document.getElementById('modalErrorLogin');
+            const modalErrorRegister = document.getElementById('modalErrorRegister');
+
+            let showingRegister = false;
+
+            function openLoginModal() {
+                showingRegister = false;
+                modalTitle.textContent = 'Login';
+                modalLoginForm.style.display = 'block';
+                modalRegisterForm.style.display = 'none';
+                switchModal.textContent = 'Switch to Register';
+                modalErrorLogin.style.display = 'none';
+                modalBackdrop.style.display = 'flex';
+                modalBackdrop.setAttribute('aria-hidden', 'false');
+                document.getElementById('m_email').focus();
+            }
+
+            function openRegisterModal() {
+                showingRegister = true;
+                modalTitle.textContent = 'Register';
+                modalLoginForm.style.display = 'none';
+                modalRegisterForm.style.display = 'block';
+                switchModal.textContent = 'Switch to Login';
+                modalErrorRegister.style.display = 'none';
+                modalBackdrop.style.display = 'flex';
+                modalBackdrop.setAttribute('aria-hidden', 'false');
+                document.getElementById('r_name').focus();
+            }
+
+            function closeModal() {
+                modalBackdrop.style.display = 'none';
+                modalBackdrop.setAttribute('aria-hidden', 'true');
+            }
+
+            modalClose.addEventListener('click', closeModal);
+            modalBackdrop.addEventListener('click', (e) => { if (e.target === modalBackdrop) closeModal(); });
+            switchModal.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (showingRegister) openLoginModal(); else openRegisterModal();
+            });
+
+            modalSubmit.addEventListener('click', async (e) => {
+                e.preventDefault();
+                if (showingRegister) {
+                    // register
+                    const name = document.getElementById('r_name').value.trim();
+                    const email = document.getElementById('r_email').value.trim();
+                    const password = document.getElementById('r_password').value;
+                    modalErrorRegister.style.display = 'none';
+                    try {
+                        const res = await fetch('/api/register', {
+                            method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({name, email, password})
+                        });
+                        const json = await res.json();
+                                if (res.ok && json.ok) {
+                                    // On successful registration, return the user to the homepage.
+                                    // Do not force immediate login.
+                                    closeModal();
+                                    window.location.href = '/';
+                                } else {
+                            modalErrorRegister.textContent = json.error || 'Registration failed';
+                            modalErrorRegister.style.display = 'block';
+                        }
+                    } catch (err) {
+                        modalErrorRegister.textContent = 'Network error';
+                        modalErrorRegister.style.display = 'block';
+                    }
+                } else {
+                    // login
+                    const email = document.getElementById('m_email').value.trim();
+                    const password = document.getElementById('m_password').value;
+                    modalErrorLogin.style.display = 'none';
+                    try {
+                        const res = await fetch('/api/login', {
+                            method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({email, password})
+                        });
+                        const json = await res.json();
+                        if (res.ok && json.ok && json.token) {
+                            localStorage.setItem('token', json.token);
+                            alert('Logged in');
+                            closeModal();
+                            location.href = 'admin.html';
+                        } else {
+                            modalErrorLogin.textContent = json.error || 'Login failed';
+                            modalErrorLogin.style.display = 'block';
+                        }
+                    } catch (err) {
+                        modalErrorLogin.textContent = 'Network error';
+                        modalErrorLogin.style.display = 'block';
+                    }
+                }
+            });
+
+            // expose functions for nav links
+            window.openLoginModal = openLoginModal;
+            window.openRegisterModal = openRegisterModal;
+
+            // If user clicks Login/Register in other pages that still exist, these functions are available
+
+            // Open modal if URL requests it (e.g. /?show=register or /#register)
+            (function checkOpenFromUrl(){
+                try {
+                    const q = new URLSearchParams(window.location.search);
+                    if (q.get('show') === 'register' || window.location.hash === '#register') {
+                        openRegisterModal();
+                        return;
+                    }
+                    if (q.get('show') === 'login' || window.location.hash === '#login') {
+                        openLoginModal();
+                        return;
+                    }
+                } catch (e) { /* ignore */ }
+            })();
+        </script>
+
 </body>
 </html>
